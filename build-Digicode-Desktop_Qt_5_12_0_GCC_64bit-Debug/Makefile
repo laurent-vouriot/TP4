@@ -61,7 +61,8 @@ SOURCES       = ../Digicode/Archivage.cpp \
 		../Digicode/Clavier.cpp \
 		../Digicode/Voyant.cpp \
 		../Digicode/ObjetTempo.cpp \
-		../Digicode/Porte.cpp 
+		../Digicode/Porte.cpp \
+		../Digicode/system.cpp 
 OBJECTS       = Archivage.o \
 		BD.o \
 		Chrono.o \
@@ -73,7 +74,8 @@ OBJECTS       = Archivage.o \
 		Clavier.o \
 		Voyant.o \
 		ObjetTempo.o \
-		Porte.o
+		Porte.o \
+		system.o
 DIST          = /usr/local/Qt/5.12.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt/5.12.0/gcc_64/mkspecs/common/unix.conf \
 		/usr/local/Qt/5.12.0/gcc_64/mkspecs/common/linux.conf \
@@ -270,7 +272,8 @@ DIST          = /usr/local/Qt/5.12.0/gcc_64/mkspecs/features/spec_pre.prf \
 		Capteur.h \
 		Clavier.h \
 		Voyant.h \
-		Porte.h ../Digicode/Archivage.cpp \
+		Porte.h \
+		system.h ../Digicode/Archivage.cpp \
 		../Digicode/BD.cpp \
 		../Digicode/Chrono.cpp \
 		../Digicode/InterfaceDeSaisie.cpp \
@@ -281,7 +284,8 @@ DIST          = /usr/local/Qt/5.12.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Digicode/Clavier.cpp \
 		../Digicode/Voyant.cpp \
 		../Digicode/ObjetTempo.cpp \
-		../Digicode/Porte.cpp
+		../Digicode/Porte.cpp \
+		../Digicode/system.cpp
 QMAKE_TARGET  = Digicode
 DESTDIR       = 
 TARGET        = Digicode
@@ -731,7 +735,17 @@ InterfaceDeSaisie.o: ../Digicode/InterfaceDeSaisie.cpp ../Digicode/InterfaceDeSa
 kbhit.o: ../Digicode/kbhit.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o kbhit.o ../Digicode/kbhit.cpp
 
-main.o: ../Digicode/main.cpp 
+main.o: ../Digicode/main.cpp ../Digicode/system.h \
+		../Digicode/InterfaceDeSaisie.h \
+		../Digicode/Voyant.h \
+		../Digicode/Clavier.h \
+		../Digicode/Chrono.h \
+		../Digicode/ObjetTempo.h \
+		../Digicode/Porte.h \
+		../Digicode/Capteur.h \
+		../Digicode/Alarme.h \
+		../Digicode/BD.h \
+		../Digicode/Archivage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Digicode/main.cpp
 
 Alarme.o: ../Digicode/Alarme.cpp ../Digicode/Alarme.h
@@ -757,6 +771,19 @@ Porte.o: ../Digicode/Porte.cpp ../Digicode/Porte.h \
 		../Digicode/Chrono.h \
 		../Digicode/Capteur.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Porte.o ../Digicode/Porte.cpp
+
+system.o: ../Digicode/system.cpp ../Digicode/system.h \
+		../Digicode/InterfaceDeSaisie.h \
+		../Digicode/Voyant.h \
+		../Digicode/Clavier.h \
+		../Digicode/Chrono.h \
+		../Digicode/ObjetTempo.h \
+		../Digicode/Porte.h \
+		../Digicode/Capteur.h \
+		../Digicode/Alarme.h \
+		../Digicode/BD.h \
+		../Digicode/Archivage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system.o ../Digicode/system.cpp
 
 ####### Install
 
